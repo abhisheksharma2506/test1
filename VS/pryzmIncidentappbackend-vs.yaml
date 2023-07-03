@@ -1,0 +1,23 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: pryzmincidentappbackend 
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - pryzm-gateway
+  http:
+    - match:
+        - uri:
+            prefix: "/pryzmincidentappbackend/"
+        - uri:
+            prefix: "/pryzmincidentappbackend"
+      route:
+        - destination:
+            host: pryzmincidentappbackend
+            port:
+              number: 5500
+      rewrite:
+        uri: "/"
+

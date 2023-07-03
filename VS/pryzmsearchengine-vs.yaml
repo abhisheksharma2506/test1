@@ -1,0 +1,23 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: pryzmsearchengine
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - pryzm-gateway
+  http:
+    - match:
+        - uri:
+            prefix: "/pryzmsearchengine/"
+        - uri:
+            prefix: "/pryzmsearchengine"
+      route:
+        - destination:
+            host: pryzmsearchengine
+            port:
+              number: 80
+      rewrite:
+        uri: "/"
+

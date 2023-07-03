@@ -1,0 +1,13 @@
+replicas: 1
+
+image:
+  repository: 660061364911.dkr.ecr.ap-south-1.amazonaws.com/pryzm360-ui
+  tag: 6
+
+containerPort: 3000
+
+resources:
+  requests:
+    cpu: 300m
+    memory: 200Mi
+

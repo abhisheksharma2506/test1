@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "pryzm360ui.fullname" . }}
+  labels:
+    app: {{ template "pryzm360ui.fullname" . }}
+spec:
+  type: ClusterIP
+  ports:
+    - name: pryzm360ui
+      protocol: TCP
+      port: 80
+      targetPort: 3000
+  selector:
+    app: {{ template "pryzm360ui.fullname" . }}
+

@@ -1,0 +1,23 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: pryzmcatalogingestion
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - test-gateway
+  http:
+    - match:
+        - uri:
+            prefix: "/pryzmcatalogingestion/"
+        - uri:
+            prefix: "/pryzmcatalogingestion"
+      route:
+        - destination:
+            host: pryzmcatalogingestion
+            port:
+              number: 80
+      rewrite:
+        uri: "/"
+

@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "pryzm360ui.fullname" . }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ template "pryzm360ui.fullname" . }}
+  replicas: {{ .Values.replicas }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "pryzm360ui.fullname" . }}
+    spec:
+      containers:
+        - name: pryzmappui
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          ports:
+            - containerPort: {{ .Values.containerPort }}
+          resources:
+            requests:
+              cpu: {{ .Values.resources.requests.cpu }}
+              memory: {{ .Values.resources.requests.memory }}
+
